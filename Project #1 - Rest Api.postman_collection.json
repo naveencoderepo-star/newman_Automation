@@ -1,0 +1,1288 @@
+{
+  "info": {
+    "_postman_id": "8e4a0cad-8aca-48ae-b785-bf70a5f7786c",
+    "name": "Project #1 - Rest Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51787170"
+  },
+  "item": [
+    {
+      "name": "Postive TCs",
+      "item": [
+        {
+          "name": "list api",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify the status code is 201 Created\", ",
+                  "",
+                  "function (){",
+                  "    pm.response.to.have.status(200);",
+                  "    pm.response.to.have.status(\"OK\");",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Verify the response time is less than 500 ms\", ",
+                  "function(){",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Verify if the response is received from server.\", ",
+                  "function(){",
+                  "pm.response.to.have.body()",
+                  "",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Verify whether received response content type is application/json\", ",
+                  "function(){",
+                  "pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")",
+                  "",
+                  "});",
+                  "",
+                  "    pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\",",
+                  "    function(){",
+                  "        pm.expect(pm.response.text()).to.include(\"id\");",
+                  "        pm.expect(pm.response.text()).to.include(\"name\");",
+                  "        pm.expect(pm.response.text()).to.include(\"email\");",
+                  "        pm.expect(pm.response.text()).to.include(\"gender\");",
+                  "        pm.expect(pm.response.text()).to.include(\"status\");",
+                  "",
+                  "    });",
+                  "",
+                  "",
+                  "pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\", function () {",
+                  "",
+                  "    var jsonData = pm.response.json();",
+                  "",
+                  "    pm.expect(jsonData[0].name).to.eql(\"Pune\");",
+                  "",
+                  "});",
+                  "",
+                  "// pm.test(\"Verify the name value\", function () {",
+                  "",
+                  "//     var jsonData = pm.response.json();",
+                  "",
+                  "//     console.log(jsonData);",
+                  "",
+                  "//     pm.expect(jsonData[0].name).to.eql(\"Pune\");",
+                  "",
+                  "// });",
+                  "",
+                  "//PRINTING RESPONSE ATTRIBUTES",
+                  "",
+                  "console.log(\"Response Status Code: \" + pm.response.code);",
+                  "console.log(\"Response Time: \" + pm.response.responseTime + \" ms\");",
+                  "",
+                  "console.log(\"Response Body:\");",
+                  "console.log(JSON.stringify(pm.response.json(), null, 2));",
+                  "",
+                  "console.log(\"Response Status Message: \" + pm.response.status);",
+                  "",
+                  "console.log(\"Response Headers:\");",
+                  "console.log(pm.response.headers.toJSON());",
+                  "",
+                  "console.log(\"Response Cookies:\");",
+                  "console.log(pm.response.cookies.toJSON());",
+                  "",
+                  "let responseSize = pm.response.size();",
+                  "",
+                  "console.log(\"Body Size: \" + responseSize.body + \" bytes\");",
+                  "console.log(\"Headers Size: \" + responseSize.headers + \" bytes\");",
+                  "console.log(\"Total Size: \" + responseSize.total + \" bytes\");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            },
+            "description": "```\nThis is a REST API that uses http method as GET and it retrieves/reads/fetches the existing user details from the database/server   \ncurl -i \\\n-H \"Accept: application/json\" \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29\" \\\n-X GET \"https://gorest.co.in/public/v2/users\"\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "create user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify the status code is 201 Created\", \r",
+                  "\r",
+                  "function (){\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.have.status(\"Created\");\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify the response time is less than 500 ms\", \r",
+                  "function(){\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+                  "\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify if the response is received from server.\", \r",
+                  "function(){\r",
+                  "pm.response.to.have.body()\r",
+                  "\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify whether received response content type is application/json\", \r",
+                  "function(){\r",
+                  "pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")\r",
+                  "\r",
+                  "});\r",
+                  "\r",
+                  "    pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\",\r",
+                  "    function(){\r",
+                  "        pm.expect(pm.response.text()).to.include(\"id\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"name\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"email\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"gender\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"status\");\r",
+                  "\r",
+                  "    })\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Jackue \",\n    \"gender\": \"male\",\n    \"email\": \"Kallis@15ce.com\",\n    \"status\": \"active\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            },
+            "description": "```\nThis is a REST API that uses http method as POST and it create the new user details and add to the database/server.\ncurl -i \\\n-H \"Accept: application/json\" \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_ACCESS_TOKEN\" \\\n-X POST \"https://gorest.co.in/public/v2/users\" \\\n-d '{\n  \"name\": \"Tenali Ramakrishna\",\n  \"gender\": \"male\",\n  \"email\": \"tenali.ramakrishna@15ce.com\",\n  \"status\": \"active\"\n}'\n \n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "update user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// console.log(\"The request URL is \"+pm.request.url);",
+                  "// console.log(\"The request method is \"+pm.request.method);",
+                  "// console.log(\"The request headers \"+pm.request.headers);",
+                  "// console.log(\"The request body \"+pm.request.body);",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "console.log(\"===== REQUEST DETAILS =====\");",
+                  "",
+                  "// console.log(\"Method:\", pm.request.method);",
+                  "// console.log(\"URL:\", pm.request.url.toString());",
+                  "// console.log(\"Headers:\", pm.request.headers);",
+                  "// console.log(\"Body:\", pm.request.body);",
+                  "",
+                  "",
+                  "",
+                  "console.log(\"The request URL is \"+pm.request.url);",
+                  "console.log(\"The request method is \"+pm.request.method);",
+                  "console.log(\"The request name is \"+pm.info.requestName);",
+                  "console.log(\"The request headers are \"+pm.request.headers);",
+                  "console.log(\"The request body/payload is \"+pm.request.body);",
+                  "console.log(\"The request body size is: \",pm.request.size());",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pune\",\n  \"email\": \"vasudeva_mishra@frami.example\",\n  \"status\": \"active\"\n}\n\n// VERIFY THE REQUEST \n\n\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users/8473090",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "8473090"
+              ]
+            },
+            "description": "## Update User\n\nPartially updates the details of an existing user on the [GoRest API](https://gorest.co.in). Only the fields provided in the request body will be updated — fields omitted will remain unchanged.\n\n---\n\n### Endpoint\n\n```\nPATCH https://gorest.co.in/public/v2/users/{userId}\n\n ```\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | `integer` | The unique ID of the user to update (provided in the URL path) |\n\n---\n\n### Authentication\n\nThis endpoint requires a **Bearer Token** passed via the `Authorization` header:\n\n```\nAuthorization: Bearer <your_token>\n\n ```\n\nYou can generate an access token from your [GoRest account](https://gorest.co.in/my-account/tokens).\n\n---\n\n### Request Headers\n\n| Header | Value |\n| --- | --- |\n| `Content-Type` | `application/json` |\n| `Accept` | `application/json` |\n| `Authorization` | `Bearer` |\n\n---\n\n### Request Body\n\nSend a JSON object with one or more of the following fields. All fields are optional — only the provided fields will be updated.\n\n| Field | Type | Description |\n| --- | --- | --- |\n| `name` | `string` | Full name of the user |\n| `email` | `string` | Email address of the user (must be unique) |\n| `status` | `string` | Account status — `active` or `inactive` |\n\n**Example:**\n\n``` json\n{\n  \"name\": \"Tenali Kumar\",\n  \"email\": \"tenali@15ce.com\",\n  \"status\": \"active\"\n}\n\n ```\n\n---\n\n### Expected Behavior\n\n- Returns **`200 OK`** with the updated user object if the request is successful.\n    \n- Returns **`401 Unauthorized`** if the Bearer token is missing or invalid.\n    \n- Returns **`404 Not Found`** if no user exists with the given `userId`.\n    \n- Returns **`422 Unprocessable Entity`** if validation fails (e.g., duplicate email or invalid status value)."
+          },
+          "response": []
+        },
+        {
+          "name": "delete user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"verify response body is not received from the server for delete api\", function () {\r",
+                  "    pm.response.to.not.have.body();\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"verifyt the status code is 204 No Content\",\r",
+                  "\r",
+                  "function() {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"verifyt the status code is 204 No Content\",\r",
+                  "\r",
+                  "function() {\r",
+                  "    pm.response.to.have.status(\"No Content\");\r",
+                  "})\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users/8471270",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "8471270"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Interoperability Testing",
+      "item": [
+        {
+          "name": "list api",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify the status code is 201 Created\", ",
+                  "",
+                  "function (){",
+                  "    pm.response.to.have.status(200);",
+                  "    pm.response.to.have.status(\"OK\");",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Verify the response time is less than 500 ms\", ",
+                  "function(){",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Verify if the response is received from server.\", ",
+                  "function(){",
+                  "pm.response.to.have.body()",
+                  "",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Verify whether received response content type is application/json\", ",
+                  "function(){",
+                  "pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")",
+                  "",
+                  "});",
+                  "",
+                  "    pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\",",
+                  "    function(){",
+                  "        pm.expect(pm.response.text()).to.include(\"id\");",
+                  "        pm.expect(pm.response.text()).to.include(\"name\");",
+                  "        pm.expect(pm.response.text()).to.include(\"email\");",
+                  "        pm.expect(pm.response.text()).to.include(\"gender\");",
+                  "        pm.expect(pm.response.text()).to.include(\"status\");",
+                  "",
+                  "    });",
+                  "",
+                  "",
+                  "pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\", function () {",
+                  "",
+                  "    var jsonData = pm.response.json();",
+                  "",
+                  "    pm.expect(jsonData[0].name).to.eql(\"Pune\");",
+                  "",
+                  "});",
+                  "",
+                  "// pm.test(\"Verify the name value\", function () {",
+                  "",
+                  "//     var jsonData = pm.response.json();",
+                  "",
+                  "//     console.log(jsonData);",
+                  "",
+                  "//     pm.expect(jsonData[0].name).to.eql(\"Pune\");",
+                  "",
+                  "// });",
+                  "",
+                  "//PRINTING RESPONSE ATTRIBUTES",
+                  "",
+                  "console.log(\"Response Status Code: \" + pm.response.code);",
+                  "console.log(\"Response Time: \" + pm.response.responseTime + \" ms\");",
+                  "",
+                  "console.log(\"Response Body:\");",
+                  "console.log(JSON.stringify(pm.response.json(), null, 2));",
+                  "",
+                  "console.log(\"Response Status Message: \" + pm.response.status);",
+                  "",
+                  "console.log(\"Response Headers:\");",
+                  "console.log(pm.response.headers.toJSON());",
+                  "",
+                  "console.log(\"Response Cookies:\");",
+                  "console.log(pm.response.cookies.toJSON());",
+                  "",
+                  "let responseSize = pm.response.size();",
+                  "",
+                  "console.log(\"Body Size: \" + responseSize.body + \" bytes\");",
+                  "console.log(\"Headers Size: \" + responseSize.headers + \" bytes\");",
+                  "console.log(\"Total Size: \" + responseSize.total + \" bytes\");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "user-agent": true
+            }
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            },
+            "description": "```\nThis is a REST API that uses http method as GET and it retrieves/reads/fetches the existing user details from the database/server   \ncurl -i \\\n-H \"Accept: application/json\" \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29\" \\\n-X GET \"https://gorest.co.in/public/v2/users\"\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "create user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify the status code is 201 Created\", \r",
+                  "\r",
+                  "function (){\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.have.status(\"Created\");\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify the response time is less than 500 ms\", \r",
+                  "function(){\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+                  "\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify if the response is received from server.\", \r",
+                  "function(){\r",
+                  "pm.response.to.have.body()\r",
+                  "\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify whether received response content type is application/json\", \r",
+                  "function(){\r",
+                  "pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")\r",
+                  "\r",
+                  "});\r",
+                  "\r",
+                  "    pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\",\r",
+                  "    function(){\r",
+                  "        pm.expect(pm.response.text()).to.include(\"id\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"name\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"email\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"gender\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"status\");\r",
+                  "\r",
+                  "    })\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Jackue \",\n    \"gender\": \"male\",\n    \"email\": \"Kallis@15ce.com\",\n    \"status\": \"active\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            },
+            "description": "```\nThis is a REST API that uses http method as POST and it create the new user details and add to the database/server.\ncurl -i \\\n-H \"Accept: application/json\" \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_ACCESS_TOKEN\" \\\n-X POST \"https://gorest.co.in/public/v2/users\" \\\n-d '{\n  \"name\": \"Tenali Ramakrishna\",\n  \"gender\": \"male\",\n  \"email\": \"tenali.ramakrishna@15ce.com\",\n  \"status\": \"active\"\n}'\n \n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "update user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// console.log(\"The request URL is \"+pm.request.url);",
+                  "// console.log(\"The request method is \"+pm.request.method);",
+                  "// console.log(\"The request headers \"+pm.request.headers);",
+                  "// console.log(\"The request body \"+pm.request.body);",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "console.log(\"===== REQUEST DETAILS =====\");",
+                  "",
+                  "// console.log(\"Method:\", pm.request.method);",
+                  "// console.log(\"URL:\", pm.request.url.toString());",
+                  "// console.log(\"Headers:\", pm.request.headers);",
+                  "// console.log(\"Body:\", pm.request.body);",
+                  "",
+                  "",
+                  "",
+                  "console.log(\"The request URL is \"+pm.request.url);",
+                  "console.log(\"The request method is \"+pm.request.method);",
+                  "console.log(\"The request name is \"+pm.info.requestName);",
+                  "console.log(\"The request headers are \"+pm.request.headers);",
+                  "console.log(\"The request body/payload is \"+pm.request.body);",
+                  "console.log(\"The request body size is: \",pm.request.size());",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pune\",\n  \"email\": \"vasudeva_mishra@frami.example\",\n  \"status\": \"active\"\n}\n\n// VERIFY THE REQUEST \n\n\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users/8473090",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "8473090"
+              ]
+            },
+            "description": "## Update User\n\nPartially updates the details of an existing user on the [GoRest API](https://gorest.co.in). Only the fields provided in the request body will be updated — fields omitted will remain unchanged.\n\n---\n\n### Endpoint\n\n```\nPATCH https://gorest.co.in/public/v2/users/{userId}\n\n ```\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | `integer` | The unique ID of the user to update (provided in the URL path) |\n\n---\n\n### Authentication\n\nThis endpoint requires a **Bearer Token** passed via the `Authorization` header:\n\n```\nAuthorization: Bearer <your_token>\n\n ```\n\nYou can generate an access token from your [GoRest account](https://gorest.co.in/my-account/tokens).\n\n---\n\n### Request Headers\n\n| Header | Value |\n| --- | --- |\n| `Content-Type` | `application/json` |\n| `Accept` | `application/json` |\n| `Authorization` | `Bearer` |\n\n---\n\n### Request Body\n\nSend a JSON object with one or more of the following fields. All fields are optional — only the provided fields will be updated.\n\n| Field | Type | Description |\n| --- | --- | --- |\n| `name` | `string` | Full name of the user |\n| `email` | `string` | Email address of the user (must be unique) |\n| `status` | `string` | Account status — `active` or `inactive` |\n\n**Example:**\n\n``` json\n{\n  \"name\": \"Tenali Kumar\",\n  \"email\": \"tenali@15ce.com\",\n  \"status\": \"active\"\n}\n\n ```\n\n---\n\n### Expected Behavior\n\n- Returns **`200 OK`** with the updated user object if the request is successful.\n    \n- Returns **`401 Unauthorized`** if the Bearer token is missing or invalid.\n    \n- Returns **`404 Not Found`** if no user exists with the given `userId`.\n    \n- Returns **`422 Unprocessable Entity`** if validation fails (e.g., duplicate email or invalid status value)."
+          },
+          "response": []
+        },
+        {
+          "name": "delete user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"verify response body is not received from the server for delete api\", function () {\r",
+                  "    pm.response.to.not.have.body();\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"verifyt the status code is 204 No Content\",\r",
+                  "\r",
+                  "function() {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"verifyt the status code is 204 No Content\",\r",
+                  "\r",
+                  "function() {\r",
+                  "    pm.response.to.have.status(\"No Content\");\r",
+                  "})\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users/8471270",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "8471270"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "FUZ Data Driven Testing",
+      "item": [
+        {
+          "name": "list api",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify the status code is 201 Created\", ",
+                  "",
+                  "function (){",
+                  "    pm.response.to.have.status(200);",
+                  "    pm.response.to.have.status(\"OK\");",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Verify the response time is less than 500 ms\", ",
+                  "function(){",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Verify if the response is received from server.\", ",
+                  "function(){",
+                  "pm.response.to.have.body()",
+                  "",
+                  "});",
+                  "",
+                  "",
+                  "pm.test(\"Verify whether received response content type is application/json\", ",
+                  "function(){",
+                  "pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")",
+                  "",
+                  "});",
+                  "",
+                  "    pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\",",
+                  "    function(){",
+                  "        pm.expect(pm.response.text()).to.include(\"id\");",
+                  "        pm.expect(pm.response.text()).to.include(\"name\");",
+                  "        pm.expect(pm.response.text()).to.include(\"email\");",
+                  "        pm.expect(pm.response.text()).to.include(\"gender\");",
+                  "        pm.expect(pm.response.text()).to.include(\"status\");",
+                  "",
+                  "    });",
+                  "",
+                  "",
+                  "pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\", function () {",
+                  "",
+                  "    var jsonData = pm.response.json();",
+                  "",
+                  "    pm.expect(jsonData[0].name).to.eql(\"Goa\");",
+                  "",
+                  "});",
+                  "",
+                  "// pm.test(\"Verify the name value\", function () {",
+                  "",
+                  "//     var jsonData = pm.response.json();",
+                  "",
+                  "//     console.log(jsonData);",
+                  "",
+                  "//     pm.expect(jsonData[0].name).to.eql(\"Pune\");",
+                  "",
+                  "// });",
+                  "",
+                  "//PRINTING RESPONSE ATTRIBUTES",
+                  "",
+                  "console.log(\"Response Status Code: \" + pm.response.code);",
+                  "console.log(\"Response Time: \" + pm.response.responseTime + \" ms\");",
+                  "",
+                  "console.log(\"Response Body:\");",
+                  "console.log(JSON.stringify(pm.response.json(), null, 2));",
+                  "",
+                  "console.log(\"Response Status Message: \" + pm.response.status);",
+                  "",
+                  "console.log(\"Response Headers:\");",
+                  "console.log(pm.response.headers.toJSON());",
+                  "",
+                  "console.log(\"Response Cookies:\");",
+                  "console.log(pm.response.cookies.toJSON());",
+                  "",
+                  "let responseSize = pm.response.size();",
+                  "",
+                  "console.log(\"Body Size: \" + responseSize.body + \" bytes\");",
+                  "console.log(\"Headers Size: \" + responseSize.headers + \" bytes\");",
+                  "console.log(\"Total Size: \" + responseSize.total + \" bytes\");",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "",
+                  "",
+                  "console.log(\"The request headers: \")",
+                  "console"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "user-agent": true
+            }
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              },
+              {
+                "key": "User-Agent",
+                "value": "{{$randomUserAgent}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            },
+            "description": "```\nThis is a REST API that uses http method as GET and it retrieves/reads/fetches the existing user details from the database/server   \ncurl -i \\\n-H \"Accept: application/json\" \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29\" \\\n-X GET \"https://gorest.co.in/public/v2/users\"\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "create user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify the status code is 201 Created\", \r",
+                  "\r",
+                  "function (){\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "    pm.response.to.have.status(\"Created\");\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify the response time is less than 500 ms\", \r",
+                  "function(){\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+                  "\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify if the response is received from server.\", \r",
+                  "function(){\r",
+                  "pm.response.to.have.body()\r",
+                  "\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Verify whether received response content type is application/json\", \r",
+                  "function(){\r",
+                  "pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")\r",
+                  "\r",
+                  "});\r",
+                  "\r",
+                  "    pm.test(\"Verify the response is having specific key value like id, email, name, gender, status\",\r",
+                  "    function(){\r",
+                  "        pm.expect(pm.response.text()).to.include(\"id\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"name\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"email\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"gender\");\r",
+                  "        pm.expect(pm.response.text()).to.include(\"status\");\r",
+                  "\r",
+                  "    })\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "accept": true
+            }
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Jackue \",\n    \"gender\": \"male\",\n    \"email\": \"{{$randomEmail}}\",\n    \"status\": \"active\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users"
+              ]
+            },
+            "description": "```\nThis is a REST API that uses http method as POST and it create the new user details and add to the database/server.\ncurl -i \\\n-H \"Accept: application/json\" \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer YOUR_ACCESS_TOKEN\" \\\n-X POST \"https://gorest.co.in/public/v2/users\" \\\n-d '{\n  \"name\": \"Tenali Ramakrishna\",\n  \"gender\": \"male\",\n  \"email\": \"tenali.ramakrishna@15ce.com\",\n  \"status\": \"active\"\n}'\n \n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "update user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// console.log(\"The request URL is \"+pm.request.url);",
+                  "// console.log(\"The request method is \"+pm.request.method);",
+                  "// console.log(\"The request headers \"+pm.request.headers);",
+                  "// console.log(\"The request body \"+pm.request.body);",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "console.log(\"===== REQUEST DETAILS =====\");",
+                  "",
+                  "// console.log(\"Method:\", pm.request.method);",
+                  "// console.log(\"URL:\", pm.request.url.toString());",
+                  "// console.log(\"Headers:\", pm.request.headers);",
+                  "// console.log(\"Body:\", pm.request.body);",
+                  "",
+                  "",
+                  "",
+                  "console.log(\"The request URL is \"+pm.request.url);",
+                  "console.log(\"The request method is \"+pm.request.method);",
+                  "console.log(\"The request name is \"+pm.info.requestName);",
+                  "console.log(\"The request headers are \"+pm.request.headers);",
+                  "console.log(\"The request body/payload is \"+pm.request.body);",
+                  "console.log(\"The request body size is: \",pm.request.size());",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pune\",\n  \"email\": \"vasudeva_mishra@frami.example\",\n  \"status\": \"active\"\n}\n\n// VERIFY THE REQUEST \n\n\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users/8473090",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "8473090"
+              ]
+            },
+            "description": "## Update User\n\nPartially updates the details of an existing user on the [GoRest API](https://gorest.co.in). Only the fields provided in the request body will be updated — fields omitted will remain unchanged.\n\n---\n\n### Endpoint\n\n```\nPATCH https://gorest.co.in/public/v2/users/{userId}\n\n ```\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | `integer` | The unique ID of the user to update (provided in the URL path) |\n\n---\n\n### Authentication\n\nThis endpoint requires a **Bearer Token** passed via the `Authorization` header:\n\n```\nAuthorization: Bearer <your_token>\n\n ```\n\nYou can generate an access token from your [GoRest account](https://gorest.co.in/my-account/tokens).\n\n---\n\n### Request Headers\n\n| Header | Value |\n| --- | --- |\n| `Content-Type` | `application/json` |\n| `Accept` | `application/json` |\n| `Authorization` | `Bearer` |\n\n---\n\n### Request Body\n\nSend a JSON object with one or more of the following fields. All fields are optional — only the provided fields will be updated.\n\n| Field | Type | Description |\n| --- | --- | --- |\n| `name` | `string` | Full name of the user |\n| `email` | `string` | Email address of the user (must be unique) |\n| `status` | `string` | Account status — `active` or `inactive` |\n\n**Example:**\n\n``` json\n{\n  \"name\": \"Tenali Kumar\",\n  \"email\": \"tenali@15ce.com\",\n  \"status\": \"active\"\n}\n\n ```\n\n---\n\n### Expected Behavior\n\n- Returns **`200 OK`** with the updated user object if the request is successful.\n    \n- Returns **`401 Unauthorized`** if the Bearer token is missing or invalid.\n    \n- Returns **`404 Not Found`** if no user exists with the given `userId`.\n    \n- Returns **`422 Unprocessable Entity`** if validation fails (e.g., duplicate email or invalid status value)."
+          },
+          "response": []
+        },
+        {
+          "name": "delete user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"verify response body is not received from the server for delete api\", function () {\r",
+                  "    pm.response.to.not.have.body();\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"verifyt the status code is 204 No Content\",\r",
+                  "\r",
+                  "function() {\r",
+                  "    pm.response.to.have.status(204);\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"verifyt the status code is 204 No Content\",\r",
+                  "\r",
+                  "function() {\r",
+                  "    pm.response.to.have.status(\"No Content\");\r",
+                  "})\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer a1acf13036e08546446ecbcbeb75b11959fbfcc0795218a185cfc982f6982c29"
+              }
+            ],
+            "url": {
+              "raw": "https://gorest.co.in/public/v2/users/8471270",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public",
+                "v2",
+                "users",
+                "8471270"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "New Folder",
+      "item": [
+        {
+          "name": "loginApi",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Verify the status code is 200\", function () {\r",
+                  "  pm.response.to.have.status(200);\r",
+                  "  pm.response.to.have.status(\"OK\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"mobile\": \"9840127991\",\r\n    \"password\": \"12345678\",\r\n    \"accountType\": \"STAFF\",\r\n    \"platformType\": \"WEB\",\r\n    \"deviceId\": \"e7027d46-9446-4a0c-8ff8-5fde2de9af9c\",\r\n    \"token\": \"\",\r\n    \"latitude\": \"13.061361543287191\",\r\n    \"longitude\": \"80.26007440007787\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://sbioa-gateway-dev.coherent.in/sbioa-auth/v2/auth/password-login",
+              "protocol": "https",
+              "host": [
+                "sbioa-gateway-dev",
+                "coherent",
+                "in"
+              ],
+              "path": [
+                "sbioa-auth",
+                "v2",
+                "auth",
+                "password-login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
